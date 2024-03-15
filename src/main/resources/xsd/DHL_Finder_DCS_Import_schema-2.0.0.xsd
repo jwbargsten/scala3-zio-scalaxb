@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:simpleType name="language">
+        <xs:annotation>
+            <xs:documentation>The supported languages of the DHL Finder.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="2" />
+            <xs:enumeration value="bg">
+                <xs:annotation>
+                    <xs:documentation>bulgarian</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="cs">
+                <xs:annotation>
+                    <xs:documentation>czech</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="da">
+                <xs:annotation>
+                    <xs:documentation>danish</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="de">
+                <xs:annotation>
+                    <xs:documentation>german</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="el">
+                <xs:annotation>
+                    <xs:documentation>greek</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="en">
+                <xs:annotation>
+                    <xs:documentation>english</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="es">
+                <xs:annotation>
+                    <xs:documentation>spanish</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="et">
+                <xs:annotation>
+                    <xs:documentation>estonian</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="fi">
+                <xs:annotation>
+                    <xs:documentation>finnish</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="fr">
+                <xs:annotation>
+                    <xs:documentation>french</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ga">
+                <xs:annotation>
+                    <xs:documentation>irish</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="hr">
+                <xs:annotation>
+                    <xs:documentation>croatian</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="hu">
+                <xs:annotation>
+                    <xs:documentation>hungarian</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="it">
+                <xs:annotation>
+                    <xs:documentation>italian</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="lt">
+                <xs:annotation>
+                    <xs:documentation>lithuanian</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="lv">
+                <xs:annotation>
+                    <xs:documentation>latvian</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="mt">
+                <xs:annotation>
+                    <xs:documentation>maltese</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="nl">
+                <xs:annotation>
+                    <xs:documentation>dutch</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="no">
+                <xs:annotation>
+                    <xs:documentation>norwegian</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="pl">
+                <xs:annotation>
+                    <xs:documentation>polish</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="pt">
+                <xs:annotation>
+                    <xs:documentation>portuguese</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ro">
+                <xs:annotation>
+                    <xs:documentation>romanian</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="sk">
+                <xs:annotation>
+                    <xs:documentation>slovak</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="sl">
+                <xs:annotation>
+                    <xs:documentation>slovene</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="sv">
+                <xs:annotation>
+                    <xs:documentation>swedish</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="shopType">
+        <xs:annotation>
+            <xs:documentation>The type of the ServicePoint (e.g. DHL Parcel Shop, Packstation (locker), Postoffice).</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="16" />
+            <xs:enumeration value="parcelShop">
+                <xs:annotation>
+                    <xs:documentation>DHL Parcel Shop</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="packStation">
+                <xs:annotation>
+                    <xs:documentation>Locker / Packstation</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="paketShop">
+                <xs:annotation>
+                    <xs:documentation>DHL Paketshop</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="postOffice">
+                <xs:annotation>
+                    <xs:documentation>Post Office</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="postBank">
+                <xs:annotation>
+                    <xs:documentation>Postbank</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="service">
+        <xs:annotation>
+            <xs:documentation>Available services in the ServicePoint.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="40" />
+            <xs:enumeration value="acceptUnlabelledParcel">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint accepts unlabelled parcels. Printing of required label for clients is supported.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ageVerification">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint offers an age verification which may be required for certain products.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="bulky">
+                <xs:annotation>
+                    <xs:documentation>Service not implemented yet</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="cashService">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint offers cash service, based on local service portfolio (e.g. Debit Card, Credit Card and Cash Payment).</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="COD">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint offers COD (Cash on Delivery) service incl. parcel hand out to customers and collection of COD payment.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="directDeliveryByDHLExpress">
+                <xs:annotation>
+                    <xs:documentation>DHL Express shipments can be directly addressed to this ServicePoint. Only applicable for joint DHL Parcel and Express ServicePoints.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="franking">
+                <xs:annotation>
+                    <xs:documentation>Offering of labels for franking. The ServicePoint sells regular DHL Parcel labels (excluding DHL Express).</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="handicappedAccess">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint is accessible without barriers and prepared for wheelchair access.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="packingMaterial">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint sells packaging material like boxes, pens etc.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="parcelacceptance">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint accepts DHL parcels handed in by a customer. Including return parcels.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="parcelcollection">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint can be used for LastMile services (except Direct Addressing), e.g. re-routing or not@home. If a ServicePoint offers direct addressing as well, both parcelpickup and parcelcollection must be sent. This service can only be accessed by downloading the DHL Finder DCS export file.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="parcelpickup">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint can be used for Direct Addressing as the primary delivery.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="parking">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint has a parking area nearby.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="pickupByDHLExpress">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint accepts pre-labelled DHL Express parcels handed in by a customer. Only applicable for joint DHL Parcel and DHL Express ServicePoints.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="postident">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint offers the personal identification service (POSTIDENT) from Deutsche Post AG. Only available in DE.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="rerouting">
+                <xs:annotation>
+                    <xs:documentation>The ServicePoint can be selected as an alternative drop-off location by a customer who wants to re-route a doorstep parcel. This service can only be accessed by downloading the DHL Finder DCS export file.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="weekday">
+        <xs:annotation>
+            <xs:documentation>A token for the weekday.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1" />
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>Monday</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation>Tuesday</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation>Wednesday</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation>Thursday</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation>Friday</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="6">
+                <xs:annotation>
+                    <xs:documentation>Saturday</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="7">
+                <xs:annotation>
+                    <xs:documentation>Sunday</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="systemID">
+        <xs:annotation>
+            <xs:documentation>Each partner has a systemID that is assigned by DHL during the onboarding process. Each ServicePoint in the XML file needs to have this systemID.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:pattern value="[a-zA-Z0-9]{1,4}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="timeInfoType">
+        <xs:annotation>
+            <xs:documentation>The type of the specified timeinfo.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="openinghour">
+                <xs:annotation>
+                    <xs:documentation>The opening hours of the Servicepoint</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="closurePeriodType">
+        <xs:annotation>
+            <xs:documentation>The type of a closure period.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="holiday">
+                <xs:annotation>
+                    <xs:documentation>The Servicepoint is temporarily closed. Requires a value for 'from' and 'to'.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="outOfService">
+                <xs:annotation>
+                    <xs:documentation>The Servicepoint is closed permanently and will not open again. Only requires a value for 'from'.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="timeformat24">
+        <xs:annotation>
+            <xs:documentation>The format for timestamps</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:pattern value="(([01][0-9]|2[0-3]):[0-5][0-9])|(24:00)" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="latitude">
+        <xs:annotation>
+            <xs:documentation>Valid values for latitude: 14 to 79.999 (decimal)</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:pattern value="(1[4-9]|[2-6][0-9]|7[0-9])(\.[0-9]{1,10})?" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="longitude">
+        <xs:annotation>
+            <xs:documentation>Valid values for longitude: -30 to 49.99 (decimal)</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:pattern value="(-[1-2][0-9]|-[0-9]|[0-9]|[1-4][0-9])(\.[0-9]{1,10})?" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="openingHours">
+        <xs:annotation>
+            <xs:documentation>Format for daily opening hours. Multiple data sets are allowed for the same day.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="timefrom" type="timeformat24">
+                <xs:annotation>
+                    <xs:documentation>Time from, e.g.: 09:00</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="timeto" type="timeformat24">
+                <xs:annotation>
+                    <xs:documentation>Time to, e.g.: 20:00</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="weekday" type="weekday">
+                <xs:annotation>
+                    <xs:documentation>The day of the week, e.g.: 1 for Monday; see type "weekday"</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="type" type="timeInfoType">
+                <xs:annotation>
+                    <xs:documentation>see type timeInfoType, e.g. openinghour</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="IDS">
+        <xs:annotation>
+            <xs:documentation>Identifiers used in the system.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="primaryKeyDeliverySystem" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The unique key in the delivery system. This is a unique key to be defined by the providing country</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:maxLength value="30" />
+                        <xs:minLength value="1" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="primaryKeyZipRegion" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>A key used to make the ServicePoint unique within a zip code region.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:maxLength value="10" />
+                        <xs:minLength value="1" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="systemID" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Each partner has a SystemID that is assigned by DHL during the onboarding process. Each ServicePoint in the XML file needs to have this SystemID.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="systemID">
+                        <xs:whiteSpace value="collapse" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="primaryKeyPSF" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The unique key of the ServicePoint generated by DHL Finder DCS. This field does not need to be provided by countries as DHL Finder DCS calculates its content itself. Content: systemID + "-" + primaryKeyDeliverySystem.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:minLength value="4" />
+                        <xs:maxLength value="35" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="complexTypeService">
+        <xs:annotation>
+            <xs:documentation>The supported services of the ServicePoint.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="service" type="service" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="otherInfoType">
+        <xs:annotation>
+            <xs:documentation>Other infos of the ServicePoint.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="type" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        The type of the otherInfo entry. Supported values are:
+                         - utilization -> This value indicates how full the service point is with parcels. This is an average value over the week. (content type: int)
+                         - utilization_mon -> This value indicates how full the service point is with parcels on Mondays (content type: int)
+                         - utilization_tue -> This value indicates how full the service point is with parcels on Tuesdays (content type: int)
+                         - utilization_wed -> This value indicates how full the service point is with parcels on Wednesdays (content type: int)
+                         - utilization_thu -> This value indicates how full the service point is with parcels on Thursdays (content type: int)
+                         - utilization_fri -> This value indicates how full the service point is with parcels on Fridays (content type: int)
+                         - utilization_sat -> This value indicates how full the service point is with parcels on Saturdays (content type: int)
+                         - utilization_sun -> This value indicates how full the service point is with parcels on Sundays (content type: int)
+                         - lean_locker -> This value indicates whether the locker is a lean locker and can only be used with a smartphone. (content type: int [0 or 1])
+
+                        Utilization values are:
+                         - 1 = very low
+                         - 2 = low
+                         - 3 = high
+
+                        Example:
+                        &lt;otherInfo&gt;
+                            &lt;type&gt;utilization_wed&lt;/type&gt;
+                            &lt;content&gt;3&lt;/content&gt;
+                        &lt;/otherInfo&gt;
+
+                        Other information can be stored here as well, as long as it adheres to the restrictions.
+                        It will not be processed by other systems and the type names may change anytime.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[0-9a-zA-Z_\-]{1,25}" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="content" minOccurs="1" maxOccurs="1">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="160" />
+                        <xs:minLength value="1" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="foreignKeyType">
+        <xs:annotation>
+            <xs:documentation>The foreign keys of other systems.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="scope" maxOccurs="1">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:pattern value="[0-9a-zA-Z_\-]{1,25}" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="content" minOccurs="1" maxOccurs="1">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="80" />
+                        <xs:minLength value="1" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="geoPosition">
+        <xs:annotation>
+            <xs:documentation>The geo positon in decimal degrees. E.g.: lat=50.176; lng=7.1307 for Bonn, Germany</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="lat" type="latitude" minOccurs="1" />
+            <xs:element name="lng" type="longitude" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="header">
+        <xs:annotation>
+            <xs:documentation>The header of the file</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="systemID" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Each partner has a SystemID that is assigned by DHL during the onboarding process. Each ServicePoint in the XML file needs to have this SystemID.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="systemID">
+                        <xs:whiteSpace value="collapse" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="systemDesc" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Description of the delivery system</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="30" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="address">
+        <xs:annotation>
+            <xs:documentation>The address of the ServicePoint.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="countryCode" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Two digit country code (ISO 3166-1)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:pattern value="[a-z]{2,2}" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="zipCode" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Zip code</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                        <xs:minLength value="1" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="city" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>City</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="35" />
+                        <xs:minLength value="1" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="district" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>District</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="40" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="additionalInfo" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Additional info to add address detail, e.g. “Inside supermarket xyz” or “Gas station”.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="80" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="area" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Area</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="40" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="street" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Street</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="35" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="houseNo" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>House number</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="additionalStreet" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>(Prepared to become DEPRECATED) Additional street</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="40" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="routingCode" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>40 digit Routing Code (german feature "Leitcode")</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="40" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="keyWord" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Each partner ServicePoint type has a keyWord that is selected during the onboarding process. Every ServicePoint in the XML file must have the defined keyWord.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="35" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="parcelLocations">
+        <xs:annotation>
+            <xs:documentation>root element</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="header" type="header" />
+                <xs:element name="data">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="parcelLocation" minOccurs="0" maxOccurs="100000">
+                                <xs:annotation>
+                                    <xs:documentation>Parcel location, up to 100.000 entries allowed.</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="address" type="address" minOccurs="1" maxOccurs="1" />
+                                        <xs:element name="shopType" type="shopType" minOccurs="1" maxOccurs="1" />
+                                        <xs:element name="shopName" minOccurs="0" maxOccurs="1">
+                                            <xs:annotation>
+                                                <xs:documentation>
+                                                    The name of the ServicePoint; examples: Toto Lotto, Lidl, John´s barbershop.
+                                                </xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:minLength value="0" />
+                                                    <xs:maxLength value="35" />
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="geoPosition" type="geoPosition" minOccurs="1" maxOccurs="1" />
+                                        <xs:element name="identifyingKeys" type="IDS" minOccurs="1" maxOccurs="1" />
+                                        <xs:element name="services" type="complexTypeService" minOccurs="0" maxOccurs="1">
+                                            <xs:unique name="serviceUnique">
+                                                <xs:selector xpath="service"/>
+                                                <xs:field xpath="."/>
+                                            </xs:unique>
+                                        </xs:element>
+                                        <xs:element name="timeinfos" minOccurs="0" maxOccurs="1">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="timeinfo" type="openingHours" maxOccurs="140" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="closurePeriods" minOccurs="0" maxOccurs="1">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="closurePeriod" minOccurs="0" maxOccurs="500">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="type" type="closurePeriodType" minOccurs="1" maxOccurs="1" />
+                                                                <xs:element name="fromDate" type="xs:date" minOccurs="1" maxOccurs="1" />
+                                                                <xs:element name="toDate" type="xs:date" minOccurs="0" maxOccurs="1" />
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="primaryLanguage" type="language" minOccurs="1" maxOccurs="1">
+                                            <xs:annotation>
+                                                <xs:documentation>The primary spoken language of the ServicePoint</xs:documentation>
+                                            </xs:annotation>
+                                        </xs:element>
+                                        <xs:element name="secondaryLanguage" type="language" minOccurs="0" maxOccurs="1">
+                                            <xs:annotation>
+                                                <xs:documentation>(Optional) The secondary spoken language of the ServicePoint</xs:documentation>
+                                            </xs:annotation>
+                                        </xs:element>
+                                        <xs:element name="tertiaryLanguage" type="language" minOccurs="0" maxOccurs="1">
+                                            <xs:annotation>
+                                                <xs:documentation>(Optional) The tertiary spoken language of the ServicePoint</xs:documentation>
+                                            </xs:annotation>
+                                        </xs:element>
+                                        <xs:element name="otherInfos" minOccurs="0" maxOccurs="1">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="otherInfo" type="otherInfoType" minOccurs="0" maxOccurs="40" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="foreignKeys" minOccurs="0" maxOccurs="1">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="foreignKey" type="foreignKeyType" minOccurs="0" maxOccurs="20" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+		<xs:key name="PKSystemID">
+            <xs:selector xpath="./header/systemID"/>
+            <xs:field xpath="."/>
+        </xs:key>
+        <xs:keyref name="FKLocSystemID" refer="PKSystemID">
+            <xs:selector xpath="./data/parcelLocation/identifyingKeys/systemID"/>
+            <xs:field xpath="."/>
+        </xs:keyref>
+        <xs:unique name="uniquePrimaryKeyDeliverySystem">
+            <xs:selector xpath="./data/parcelLocation/identifyingKeys/primaryKeyDeliverySystem"/>
+            <xs:field xpath="."/>
+        </xs:unique>
+    </xs:element>
+</xs:schema>
